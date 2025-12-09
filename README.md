@@ -7,7 +7,9 @@ A web-based prototype demonstrating an AI-powered system for evaluating transfer
 ## Course Context
 
 **Course:** INFO 200 - Introduction to Informatics
+
 **Institution:** University of Washington
+
 **Project Type:** Final Prototype Demonstration
 
 This is a student demo project created to explore how technology can improve the transfer student experience through better credit evaluation systems.
