@@ -340,9 +340,9 @@ export default function ResultsPage() {
       {/* Action Bar */}
       <div className="bg-white border-b border-gray-200 py-3 px-4">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-          <Link href={ROUTES.HOME} className="w-full sm:w-auto">
+          <Link href={ROUTES.DASHBOARD} className="w-full sm:w-auto">
             <Button variant="outline" size="sm" className="w-full sm:w-auto">
-              Back to Home
+              Back to Dashboard
             </Button>
           </Link>
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">

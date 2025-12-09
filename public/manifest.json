@@ -1,0 +1,17 @@
+{
+  "name": "UW INFO 200 Transfer Evaluation Tool",
+  "short_name": "UW Transfer Tool",
+  "description": "INFO 200 Final Project demonstrating an interactive UW transfer evaluation tool.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4b2e83",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/uw-logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -8,8 +8,6 @@ import {
   Button,
   Card,
   Checkbox,
-  FileUpload,
-  SupportedFormats,
   LoadingSpinner,
 } from "@/components/ui";
 import { ROUTES } from "@/lib/constants";
@@ -17,23 +15,21 @@ import { getUser } from "@/lib/auth";
 
 export default function UploadPage() {
   const router = useRouter();
-  const [file, setFile] = useState<File | null>(null);
   const [agreed, setAgreed] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Demo: Pre-uploaded transcript
+  const demoFileName = "transcript.pdf";
 
   useEffect(() => {
     const user = getUser();
     setIsLoggedIn(!!user);
   }, []);
 
-  const handleFileSelect = (selectedFile: File) => {
-    setFile(selectedFile);
-  };
-
   const handleContinue = async () => {
-    if (!file || !agreed) return;
+    if (!agreed) return;
 
     setIsProcessing(true);
     setProgress(0);
@@ -43,13 +39,13 @@ export default function UploadPage() {
       setProgress(20);
       await new Promise(resolve => setTimeout(resolve, 500));
 
-      // Store file info in localStorage
+      // Store demo file info in localStorage
       localStorage.setItem(
         "uploadedTranscript",
         JSON.stringify({
-          name: file.name,
-          size: file.size,
-          type: file.type,
+          name: demoFileName,
+          size: 245678,
+          type: "application/pdf",
           uploadedAt: new Date().toISOString(),
         })
       );
@@ -61,7 +57,7 @@ export default function UploadPage() {
       const response = await fetch('/api/match-courses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fileName: file.name }),
+        body: JSON.stringify({ fileName: demoFileName }),
       });
 
       setProgress(80);
@@ -99,17 +95,31 @@ export default function UploadPage() {
 
         <main className="flex-1 flex flex-col items-center px-4 py-6 bg-white">
         <Card className="max-w-lg">
-          <FileUpload onFileSelect={handleFileSelect} />
-
-          <SupportedFormats />
-
-          {file && (
-            <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
-              <p className="text-sm text-green-800">
-                Selected: <span className="font-medium">{file.name}</span>
+          {/* Demo: Pre-uploaded transcript placeholder */}
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+            <div className="flex flex-col items-center text-center">
+              <svg className="w-16 h-16 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <p className="text-gray-600 text-sm">
+                Demo Mode: Transcript Ready
               </p>
             </div>
-          )}
+          </div>
+
+          {/* Supported Formats Info */}
+          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
+            <p className="text-xs text-blue-800">
+              <span className="font-semibold">Supported formats:</span> PDF, JPG, PNG
+            </p>
+          </div>
+
+          {/* Pre-uploaded file display */}
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
+            <p className="text-sm text-green-800">
+              Selected: <span className="font-medium">{demoFileName}</span>
+            </p>
+          </div>
 
           {/* Info Box */}
           <div className="mt-4 border border-gray-200 rounded-lg p-4">
@@ -157,7 +167,7 @@ export default function UploadPage() {
             onClick={handleContinue}
             fullWidth
             className="mt-5"
-            disabled={!file || !agreed}
+            disabled={!agreed}
           >
             Continue
           </Button>
