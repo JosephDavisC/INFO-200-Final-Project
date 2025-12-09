@@ -24,8 +24,14 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
 
   const handleGoogleSignUp = () => {
-    // Simulate Google sign up
-    saveUser({ fullName: "Google User", email: "user@gmail.com" });
+    // Simulate Google sign up - In a real implementation, this would use Google OAuth
+    // and retrieve the user's actual name from their Google account
+    // For demo purposes, we'll simulate fetching the authenticated user's name
+    const googleUser = {
+      fullName: "John Doe", // This would come from Google OAuth response
+      email: "john.doe@gmail.com" // This would come from Google OAuth response
+    };
+    saveUser(googleUser);
     router.push("/onboarding/institution");
   };
 

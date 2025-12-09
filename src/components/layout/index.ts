@@ -6,3 +6,4 @@
 export { PageHeader, type PageHeaderProps } from "./PageHeader";
 export { AuthLayout, type AuthLayoutProps } from "./AuthLayout";
 export { Navbar } from "./Navbar";
+export { Footer } from "./Footer";

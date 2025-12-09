@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Encode_Sans } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/layout";
 
 const encodeSans = Encode_Sans({
   subsets: ["latin"],
@@ -24,8 +25,8 @@ export const metadata: Metadata = {
     "academic transfer",
     "credit evaluation",
   ],
-  authors: [{ name: "Joseph Chamdani" }],
-  creator: "Joseph Chamdani",
+  authors: [{ name: "John Doe" }],
+  creator: "John Doe",
   publisher: "University of Washington",
   formatDetection: {
     email: false,
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     title: "UW INFO 200 Transfer Evaluation Tool",
     description: "INFO 200 Final Project demonstrating an interactive UW transfer evaluation tool.",
     images: ["/UW_Transfer_Evaluation_Tool.jpg"],
-    creator: "@josephchamdani",
+    creator: "@johndoe",
   },
   robots: {
     index: true,
@@ -85,8 +86,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${encodeSans.variable} font-sans antialiased`}>
-        {children}
+      <body className={`${encodeSans.variable} font-sans antialiased flex flex-col min-h-screen`}>
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );

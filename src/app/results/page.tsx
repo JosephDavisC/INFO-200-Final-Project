@@ -376,7 +376,7 @@ export default function ResultsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="flex flex-col sm:block">
                 <span className="font-semibold text-gray-900 text-sm sm:text-base">Name</span>
-                <span className="sm:ml-3 text-gray-700 text-sm sm:text-base mt-1 sm:mt-0">{user?.fullName || "Jane Doe"}</span>
+                <span className="sm:ml-3 text-gray-700 text-sm sm:text-base mt-1 sm:mt-0">{user?.fullName || "John Doe"}</span>
               </div>
               <div className="flex flex-col sm:block">
                 <span className="font-semibold text-gray-900 text-sm sm:text-base">Previous Institution(s)</span>

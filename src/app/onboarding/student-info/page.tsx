@@ -16,18 +16,18 @@ const graduationYears = [
 
 export default function StudentInfoPage() {
   const router = useRouter();
-  const [fullName, setFullName] = useState("Joseph Davis Chamdani");
-  const [email, setEmail] = useState("joseph.chamdani@gmail.com");
+  const [fullName, setFullName] = useState("John Doe");
+  const [email, setEmail] = useState("john.doe@example.com");
   const [major, setMajor] = useState("Informatics");
   const [graduationYear, setGraduationYear] = useState("2025");
   const [studentId, setStudentId] = useState("");
   const [confirmed, setConfirmed] = useState(false);
 
-  // Pre-fill with demo data - always use Joseph's information for demo
+  // Pre-fill with demo data
   useEffect(() => {
     // Override any existing user data with demo information
-    setFullName("Joseph Davis Chamdani");
-    setEmail("joseph.chamdani@gmail.com");
+    setFullName("John Doe");
+    setEmail("john.doe@example.com");
     setMajor("Informatics");
     setGraduationYear("2025");
     setStudentId("");
